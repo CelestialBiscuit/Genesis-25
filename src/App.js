@@ -9,6 +9,7 @@ function App() {
   const [stage, setStage] = useState('signup'); // signup -> magic -> game -> details
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
+  const [loadingAuth, setLoadingAuth] = useState(true);
 
   // Make the grid reactive
   const [grid, setGrid] = useState([
@@ -31,13 +32,30 @@ function App() {
 
   const [crosswordCompleted, setCrosswordCompleted] = useState(false);
 
+  // Load stage from localStorage
+  useEffect(() => {
+    const savedStage = localStorage.getItem('stage');
+    if (savedStage) setStage(savedStage);
+  }, []);
+
+  // Firebase auth listener
   useEffect(() => {
     const unsub = auth.onAuthStateChanged(u => {
       setUser(u);
-      if (!u) setStage('signup');
+      if (u) {
+        const savedStage = localStorage.getItem('stage') || 'magic';
+        setStage(savedStage);
+        // Optionally, fetch user profile from Firestore
+      }
+      setLoadingAuth(false);
     });
     return unsub;
   }, []);
+
+  // Save stage to localStorage whenever it changes
+  useEffect(() => {
+    if (stage) localStorage.setItem('stage', stage);
+  }, [stage]);
 
   // Sample clues
   const sampleClues = {
@@ -61,6 +79,8 @@ function App() {
   const handleCellSelect = (row, col) => {
     console.log('Selected:', row, col);
   };
+
+  if (loadingAuth) return <div>Loading...</div>;
 
   return (
     <div className="celestial-page">
