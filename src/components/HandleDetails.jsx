@@ -43,8 +43,8 @@ export default function HandleDetails({ profile }) {
       return;
     }
 
-    // Phone validation: exactly 9 digits
-    if (!/^\d{9}$/.test(phone)) {
+    // Phone validation: exactly 10 digits
+    if (!/^\d{10}$/.test(phone)) {
       setError('Enter a valid phone number (without country code)');
       return;
     }

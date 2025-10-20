@@ -8,7 +8,7 @@ export default function MagicWords({ onSuccess }) {
   const [attempt, setAttempt] = useState('');
   const [msg, setMsg] = useState(null);
   const [trail, setTrail] = useState([]);
-  const MAGIC = 'CONSTELLATION'; //change karlena 
+  const MAGIC = 'ALOHOMORA'; 
 
   // Cursor trail effect
   useEffect(() => {
@@ -83,7 +83,7 @@ export default function MagicWords({ onSuccess }) {
       {/* Footer icons with glow on hover */}
       <footer className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex gap-6 flex-nowrap justify-center w-full max-w-xs sm:max-w-sm">
         <a
-          href="https://wa.me/1234567890"
+          href="https://chat.whatsapp.com/DXhEfRkFoeG5NizLjPKyLc"
           target="_blank"
           rel="noopener noreferrer"
           className="text-2xl sm:text-3xl text-yellow-200 hover:text-green-400 transition duration-300 hover:drop-shadow-[0_0_10px_rgba(0,255,0,0.8)]"
@@ -91,7 +91,7 @@ export default function MagicWords({ onSuccess }) {
           <FontAwesomeIcon icon={faWhatsapp} />
         </a>
         <a
-          href="https://instagram.com/yourusername"
+          href="https://www.instagram.com/celestialbiscuit/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-2xl sm:text-3xl text-yellow-200 hover:text-pink-400 transition duration-300 hover:drop-shadow-[0_0_10px_rgba(255,0,128,0.8)]"
@@ -99,7 +99,7 @@ export default function MagicWords({ onSuccess }) {
           <FontAwesomeIcon icon={faInstagram} />
         </a>
         <a
-          href="https://open.spotify.com/user/yourusername"
+          href="https://open.spotify.com/playlist/4F6W80RB0uusR61K3yMjEf?si=00bdd0d28bd74b25"
           target="_blank"
           rel="noopener noreferrer"
           className="text-2xl sm:text-3xl text-yellow-200 hover:text-green-300 transition duration-300 hover:drop-shadow-[0_0_10px_rgba(0,255,128,0.8)]"

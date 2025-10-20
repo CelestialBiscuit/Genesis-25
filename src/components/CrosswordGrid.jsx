@@ -54,13 +54,14 @@ const CrosswordGrid = ({ grid, onCellChange, onCellSelect, selectedCell, activeC
   }, [selectedCell]);
 
   return (
-    <div className="flex justify-center p-2 w-full overflow-x-auto">
-      <div
-        className="inline-grid gap-1 p-2 rounded-xl border border-yellow-400 bg-black/30 backdrop-blur-sm cosmic-border"
-        style={{
-          gridTemplateColumns: `repeat(${grid[0].length}, min(9vw, 42px))`,
-        }}
-      >
+      <div className="flex justify-center p-2 w-full max-w-full">
+        <div
+          className="inline-grid gap-1 p-2 rounded-xl border border-yellow-400 bg-black/30 backdrop-blur-sm cosmic-border"
+          style={{
+            gridTemplateColumns: `repeat(${grid[0].length}, minmax(24px, 1fr))`,
+          }}
+        >
+
         {grid.flatMap((row, rowIndex) =>
           row.map((cell, colIndex) => {
             const isSelected = selectedCell?.row === rowIndex && selectedCell?.col === colIndex;

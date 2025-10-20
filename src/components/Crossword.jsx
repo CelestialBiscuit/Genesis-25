@@ -154,7 +154,7 @@ const Crossword = ({ profile, onComplete }) => {
               {sampleClues.filter(c => c.direction === dir).map(c => (
                 <div
                   key={c.number}
-                  className="bg-black/30 p-2 rounded-md transition duration-200 text-white flex items-start gap-2"
+                  className="p-2 rounded-md transition duration-200 text-white flex items-start gap-2"
                 >
                   <span className="text-yellow-200 font-semibold">{c.number}.</span>
                   <span className="text-sm sm:text-base">{c.clue}</span>
