@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .celestial-page {
+    @apply min-h-screen bg-celestialBlack bg-celestial-gradient text-white font-celestial flex items-center justify-center;
+  }
+}
