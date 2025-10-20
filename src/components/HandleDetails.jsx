@@ -31,12 +31,27 @@ export default function HandleDetails({ profile }) {
     e.preventDefault();
     if (!auth.currentUser) return;
 
+    // Basic empty field check
     if (!name || !enrollment || !phone) {
       setError('Please fill all fields');
       return;
     }
 
+    // Enrollment validation: exactly 11 digits
+    if (!/^\d{11}$/.test(enrollment)) {
+      setError('Enter a valid IGDTUW enrollment number');
+      return;
+    }
+
+    // Phone validation: exactly 9 digits
+    if (!/^\d{9}$/.test(phone)) {
+      setError('Enter a valid phone number (without country code)');
+      return;
+    }
+
+    setError(null);
     setLoading(true);
+
     try {
       await ensureUserProfile(auth.currentUser.uid, {
         name,
@@ -55,8 +70,10 @@ export default function HandleDetails({ profile }) {
     } catch (e) {
       showNotification(`Error: ${e.message}`, 'error');
     }
+
     setLoading(false);
   };
+
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center text-center p-6 relative">
