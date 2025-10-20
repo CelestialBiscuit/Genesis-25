@@ -11,7 +11,6 @@ function App() {
   const [profile, setProfile] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
 
-  // Default crossword grid
   const defaultGrid = [
     [
       { letter: '', isBlack: false, number: 1 },
@@ -30,7 +29,6 @@ function App() {
     ],
   ];
 
-  // Load saved crossword from localStorage
   const [grid, setGrid] = useState(() => {
     const saved = localStorage.getItem('crosswordGrid');
     return saved ? JSON.parse(saved) : defaultGrid;
@@ -45,24 +43,20 @@ function App() {
     }
   }, [grid, stage]);
 
-  // When crossword is completed
   const handleCrosswordComplete = () => {
     localStorage.removeItem('crosswordGrid');
     setStage('details');
   };
 
-  // ✅ Firebase Auth Listener — now respects saved stage exactly
   useEffect(() => {
     const unsub = auth.onAuthStateChanged(u => {
       setUser(u);
       setLoadingAuth(false);
 
       if (u) {
-        // Restore exact saved stage (even if it's 'game')
         const savedStage = localStorage.getItem('stage');
         setStage(savedStage || 'magic');
       } else {
-        // No user — reset to signup
         setStage('signup');
       }
     });
@@ -70,14 +64,12 @@ function App() {
     return unsub;
   }, []);
 
-  // Save stage and reset after completion
-useEffect(() => {
+ useEffect(() => {
   if (stage === 'details') {
     // Game finished → clear progress and next time start fresh
     localStorage.removeItem('stage');
     localStorage.removeItem('crosswordGrid');
   } else if (stage) {
-    // Save current stage normally
     localStorage.setItem('stage', stage);
   }
 }, [stage]);

@@ -4,7 +4,6 @@ export const sampleClues = [
   { number: 5, clue: 'Department where the founders first cast their code spells (2)', answer: 'IT', row: 2, col: 9, direction: 'across' },
   { number: 6, clue: 'Hackathon where data structures aligned perfectly (7)', answer: 'EQUINOX', row: 4, col: 5, direction: 'across' },
   { number: 7, clue: 'Presidents of the biscuit galaxy (7)', answer: 'SOLARIS', row: 6, col: 5, direction: 'across' },
-
   // Down
   { number: 1, clue: 'Campus overrun by these furry invaders (7)', answer: 'MONKEYS', row: 0, col: 5, direction: 'down' },
   { number: 2, clue: 'Keeping track of all your versions? Commit it to ___ (3)', answer: 'GIT', row: 0, col: 10, direction: 'down' },
@@ -26,13 +25,10 @@ export const createEmptyGrid = (rows = 9, cols = 12) => {
       const r = direction === 'down' ? row + i : row;
       const c = direction === 'across' ? col + i : col;
 
-      // Make cell writable if it’s black
       if (grid[r][c].isBlack) grid[r][c].isBlack = false;
 
-      // Initialize properties if missing
       if (!grid[r][c].letter) grid[r][c].letter = '';
 
-      // Add number only to starting cell, but *merge* if overlapping
       if (i === 0) {
         if (!grid[r][c].numbers) grid[r][c].numbers = [];
         if (!grid[r][c].numbers.includes(number)) grid[r][c].numbers.push(number);
@@ -40,7 +36,6 @@ export const createEmptyGrid = (rows = 9, cols = 12) => {
     }
   });
 
-  // Optionally, flatten numbers if you want a single display string
   grid.forEach(row => row.forEach(cell => {
     if (cell.numbers && cell.numbers.length > 0) {
       cell.number = cell.numbers.join(',');
