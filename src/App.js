@@ -65,13 +65,13 @@ function App() {
   return (
     <div className="celestial-page">
       <div className="max-w-4xl w-full">
-        {stage === 'signup' && (
+        {/* {stage === 'signup' && (
           <Signup onSignedIn={(u, p) => { setUser(u); setProfile(p); setStage('magic'); }} />
-        )}
+        )} */}
         {stage === 'magic' && (
           <MagicWords onSuccess={() => setStage('game')} profile={profile} />
         )}
-        {stage === 'game' && (
+        {stage === 'signup' && (
           <Crossword
             profile={profile}
             grid={grid}

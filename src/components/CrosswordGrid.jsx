@@ -54,10 +54,15 @@ const CrosswordGrid = ({ grid, onCellChange, onCellSelect, selectedCell, activeC
   }, [selectedCell]);
 
   return (
-    <div className="inline-grid gap-1 p-4 rounded-xl border border-yellow-400 bg-black/30 backdrop-blur-sm cosmic-border">
-      {grid.map((row, rowIndex) => (
-        <div key={rowIndex} className="flex gap-1">
-          {row.map((cell, colIndex) => {
+    <div className="flex justify-center p-2 w-full overflow-x-auto">
+      <div
+        className="inline-grid gap-1 p-2 rounded-xl border border-yellow-400 bg-black/30 backdrop-blur-sm cosmic-border"
+        style={{
+          gridTemplateColumns: `repeat(${grid[0].length}, min(9vw, 42px))`,
+        }}
+      >
+        {grid.flatMap((row, rowIndex) =>
+          row.map((cell, colIndex) => {
             const isSelected = selectedCell?.row === rowIndex && selectedCell?.col === colIndex;
             const isInActiveWord = isCellInActiveWord(rowIndex, colIndex);
             const validationState = validation?.[rowIndex]?.[colIndex];
@@ -65,9 +70,9 @@ const CrosswordGrid = ({ grid, onCellChange, onCellSelect, selectedCell, activeC
             return (
               <div key={`${rowIndex}-${colIndex}`} className="relative">
                 {cell.isBlack ? (
-                  <div className="w-[48px] h-[48px] bg-gray-600 bg-opacity-20 " />
+                  <div className="w-full aspect-square bg-gray-600 bg-opacity-20" />
                 ) : (
-                  <div className="relative">
+                  <div className="relative w-full aspect-square">
                     {cell.number && (
                       <span className="absolute top-0.5 left-1 text-[10px] font-light text-yellow-400 z-10">
                         {cell.number}
@@ -82,7 +87,7 @@ const CrosswordGrid = ({ grid, onCellChange, onCellSelect, selectedCell, activeC
                       onKeyDown={e => handleKeyDown(e, rowIndex, colIndex)}
                       onClick={() => onCellSelect(rowIndex, colIndex)}
                       className={`
-                        w-[48px] h-[48px] text-center text-lg md:text-xl font-light uppercase rounded-md
+                        w-full h-full text-center text-lg md:text-xl font-light uppercase rounded-md
                         bg-neutral-800 text-yellow-100 border border-yellow-400
                         focus:outline-none focus:ring-2 focus:ring-yellow-400
                         ${isSelected ? 'ring-2 ring-yellow-400 bg-yellow-900/40' : ''}
@@ -96,11 +101,10 @@ const CrosswordGrid = ({ grid, onCellChange, onCellSelect, selectedCell, activeC
                 )}
               </div>
             );
-          })}
-        </div>
-      ))}
+          })
+        )}
+      </div>
     </div>
-
   );
 };
 

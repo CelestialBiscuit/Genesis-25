@@ -21,22 +21,19 @@ export default function Signup({ onSignedIn }) {
     }
   };
 
-  // 🟡 Cursor trail logic
+  // Cursor trail logic
   useEffect(() => {
     const handleMove = (e) => {
-      const newDot = {
-        id: Math.random(),
-        x: e.clientX,
-        y: e.clientY,
-      };
-      setTrail((prev) => [...prev.slice(-8), newDot]); // keep last 8 for fading trail
+      const newDot = { id: Math.random(), x: e.clientX, y: e.clientY };
+      setTrail((prev) => [...prev.slice(-8), newDot]);
     };
     window.addEventListener("mousemove", handleMove);
     return () => window.removeEventListener("mousemove", handleMove);
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center text-center">
+    <div className="min-h-screen w-full flex items-center justify-center text-center overflow-hidden relative">
+      {/* Cursor trail */}
       {trail.map((dot, index) => (
         <motion.div
           key={dot.id}
@@ -54,15 +51,16 @@ export default function Signup({ onSignedIn }) {
         />
       ))}
 
-      {/* Twinkling stars background */}
+      {/* Twinkling stars */}
       <Stars count={120} />
 
-      <div className="relative p-10 rounded-3xl max-w-lg mx-auto">
-        <h1 className="font-poppins font-thin text-5xl text-yellow-100 tracking-widest drop-shadow-[0_0_10px_rgba(255,255,200,0.4)] mb-4">
+      {/* Main card */}
+      <div className="relative p-6 sm:p-10 rounded-3xl max-w-full sm:max-w-lg mx-4 sm:mx-auto">
+        <h1 className="font-poppins font-thin text-4xl sm:text-5xl text-yellow-100 tracking-widest drop-shadow-[0_0_10px_rgba(255,255,200,0.4)] mb-4">
           CELESTIAL<br />CROSSWORD
         </h1>
 
-        <p className="text-yellow-400 mb-10 text-base">
+        <p className="text-yellow-400 mb-6 sm:mb-10 text-sm sm:text-base">
           Sign in to access the cosmic puzzle
         </p>
 
@@ -79,7 +77,7 @@ export default function Signup({ onSignedIn }) {
 
         {error && <div className="text-rose-500 mt-4">{error}</div>}
 
-        <p className="text-gray-500 text-sm mt-4">
+        <p className="text-gray-500 text-xs sm:text-sm mt-4">
           © Celestial Biscuit IGDTUW | Crafted with curiosity
         </p>
       </div>

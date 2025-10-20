@@ -93,8 +93,8 @@ export default function HandleDetails({ profile }) {
         </div>
       )}
 
-      <div className="max-w-md w-full p-8">
-        <h2 className="font-poppins font-thin text-4xl text-yellow-100 mb-2 drop-shadow-[0_0_10px_rgba(255,255,200,0.4)] mb-3">
+      <div className="w-full max-w-lg sm:max-w-md p-6 sm:p-8 mx-auto">
+        <h2 className="font-poppins font-thin text-3xl sm:text-4xl text-yellow-100 drop-shadow-[0_0_10px_rgba(255,255,200,0.4)] mb-2 sm:mb-3">
           Congratulations, Meridian!
         </h2>
         <p className="text-yellow-200 mb-6 text-sm sm:text-base">

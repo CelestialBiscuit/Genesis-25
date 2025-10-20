@@ -53,15 +53,16 @@ export default function MagicWords({ onSuccess }) {
         />
       ))}
 
-      {/* Title and instructions */}
-      <div className="relative rounded-3xl max-w-lg mx-auto">
-        <h1 className="font-poppins font-thin text-5xl text-yellow-100 tracking-widest drop-shadow-[0_0_10px_rgba(255,255,200,0.4)] mb-4">
-          CELESTIAL<br />CROSSWORD
-        </h1>
-      <p className="text-yellow-300 mb-4 sm:mb-6 text-sm sm:text-base">
-        Type the cosmic password to unlock the puzzle
-      </p>
-      </div>
+     {/* Title and instructions */}
+<div className="relative rounded-3xl max-w-full sm:max-w-lg mx-4 sm:mx-auto p-4 sm:p-0">
+  <h1 className="font-poppins font-thin text-3xl xs:text-4xl sm:text-5xl text-yellow-100 tracking-widest drop-shadow-[0_0_10px_rgba(255,255,200,0.4)] mb-3 sm:mb-4 leading-snug sm:leading-tight">
+    CELESTIAL<br />CROSSWORD
+  </h1>
+  <p className="text-yellow-300 mb-3 sm:mb-6 text-xs xs:text-sm sm:text-base leading-snug">
+    Type the cosmic password to unlock the puzzle
+  </p>
+</div>
+
 
       {/* Input and button */}
       <form onSubmit={tryMagic} className="w-full max-w-xs sm:max-w-sm">
@@ -77,7 +78,7 @@ export default function MagicWords({ onSuccess }) {
       </form>
 
       {/* Message */}
-      {msg && <div className="mt-4 text-yellow-200 text-sm sm:text-base">{msg}</div>}
+      {msg && <div className="mt-4 p-2 text-yellow-200 text-sm sm:text-base">{msg}</div>}
 
       {/* Footer icons with glow on hover */}
       <footer className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex gap-6 flex-nowrap justify-center w-full max-w-xs sm:max-w-sm">
