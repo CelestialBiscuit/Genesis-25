@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Analytics } from "@vercel/analytics/react"
 import './index.css';
 import "@fontsource/poppins/100.css"; // Thin
 import "@fontsource/poppins/200.css"; // ExtraLight
@@ -18,6 +19,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
+    <Analytics />
   </React.StrictMode>
 );
 
